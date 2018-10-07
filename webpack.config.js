@@ -19,8 +19,7 @@ module.exports = {
     module:{
         rules:[
             {
-                test: /\.html$/,
-                include: path.resolve(__dirname, 'src/views'),
+                test: /\.html$/, 
                 use:[{
                     loader: 'html-loader',
                     options: {
@@ -36,10 +35,21 @@ module.exports = {
                         options: {
                           // you can specify a publicPath here
                           // by default it use publicPath in webpackOptions.output
-                          publicPath: '../'
                         }
                       },
                         "css-loader"
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader:'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'static/assets/images/'
+                          }
+                    }
                 ]
             }
         ]
