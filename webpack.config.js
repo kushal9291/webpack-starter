@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin'); 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/js/app.js',
@@ -14,7 +15,8 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port: 9000,
+        hot: true
     },
     module:{
         rules:[
@@ -29,15 +31,17 @@ module.exports = {
             }, 
             {
                 test: /\.css$/,
-                use:[ 
-                    {
+                use:[                    
+                    //   { loader: "style-loader"},
+                      { loader: "css-loader" }, 
+                      {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                           // you can specify a publicPath here
                           // by default it use publicPath in webpackOptions.output
                         }
-                      },
-                        "css-loader"
+                      },                      
+                      
                 ]
             },
             {
@@ -63,8 +67,7 @@ module.exports = {
                             publicPath: '../fonts/'
                           }
                     }
-                ]
-              
+                ]              
             }
         ]
     },
@@ -74,6 +77,7 @@ module.exports = {
             filename: 'css/style.css', 
             path:path.resolve(__dirname, 'dist')
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({ 
             title: 'Main File',
             filename: path.resolve(__dirname, 'dist/index.html'),
