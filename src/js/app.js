@@ -1,16 +1,16 @@
 //Adding JS
 import _ from 'lodash';
 import $ from 'jquery';  
-require('bootstrap');
+import 'bootstrap'; 
 
 
 //Adding CSS
-require('bootstrap/dist/css/bootstrap.min.css');
-require('../css/style.css');
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/style.css'; 
 
 
 
-console.log('From AppJs');
+console.log('From AppJs'); 
 
 $.noConflict();
 $(document).ready(function(){

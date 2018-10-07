@@ -7,14 +7,20 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
     entry: './src/js/app.js',
     output:{
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist/static')
+        filename: 'static/bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        compress: true,
+        port: 9000
     },
     module:{
         rules:[
             {
                 test: /\.html$/,
-                include: path.join(__dirname, 'src/views'),
+                include: path.resolve(__dirname, 'src/views'),
                 use:[{
                     loader: 'html-loader',
                     options: {
@@ -41,7 +47,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']), 
         new MiniCssExtractPlugin({
-            filename: 'style.css', 
+            filename: 'static/style.css', 
+            path:path.resolve(__dirname, 'dist')
         }),
         new HtmlWebpackPlugin({ 
             title: 'Main File',
