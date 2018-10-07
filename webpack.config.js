@@ -7,7 +7,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
     entry: './src/js/app.js',
     output:{
-        filename: 'static/bundle.js',
+        filename: 'js/bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
     devtool: 'inline-source-map',
@@ -47,7 +47,7 @@ module.exports = {
                         loader:'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'static/assets/images/'
+                            outputPath: 'images/'
                           }
                     }
                 ]
@@ -59,8 +59,8 @@ module.exports = {
                         loader:'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'static/assets/fonts/',
-                            publicPath: 'assets/fonts/'
+                            outputPath: 'fonts/',
+                            publicPath: 'fonts/'
                           }
                     }
                 ]
@@ -71,7 +71,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']), 
         new MiniCssExtractPlugin({
-            filename: 'static/style.css', 
+            filename: 'css/style.css', 
             path:path.resolve(__dirname, 'dist')
         }),
         new HtmlWebpackPlugin({ 
