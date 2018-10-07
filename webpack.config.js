@@ -14,6 +14,7 @@ module.exports = {
         rules:[
             {
                 test: /\.html$/,
+                include: path.join(__dirname, 'src/views'),
                 use:[{
                     loader: 'html-loader',
                     options: {
@@ -42,10 +43,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'style.css', 
         }),
-        new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin({ 
             title: 'Main File',
             filename: path.resolve(__dirname, 'dist/index.html'),
-            template: './src/views/index.html'
+            template: path.resolve(__dirname, 'src/views/index.html'),
+              
         }),
         new HtmlWebpackPlugin({
             title: 'Blank File',

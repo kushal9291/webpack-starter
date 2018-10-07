@@ -1,10 +1,12 @@
 //Adding JS
-import 'bootstrap';
+import _ from 'lodash';
 import $ from 'jquery';  
+require('bootstrap');
+
 
 //Adding CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/style.css';
+require('bootstrap/dist/css/bootstrap.min.css');
+require('../css/style.css');
 
 
 
