@@ -16,7 +16,7 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
         port: 9000,
-        hot: true
+       // hot: true
     },
     module:{
         rules:[
@@ -31,17 +31,15 @@ module.exports = {
             }, 
             {
                 test: /\.css$/,
-                use:[                    
-                    //   { loader: "style-loader"},
-                      { loader: "css-loader" }, 
+                use:[ 
                       {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                           // you can specify a publicPath here
                           // by default it use publicPath in webpackOptions.output
                         }
-                      },                      
-                      
+                      },  
+                      "css-loader"    
                 ]
             },
             {
