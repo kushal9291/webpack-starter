@@ -5,5 +5,5 @@ $.noConflict();
 $(document).ready(function(){
     console.log('From AppJs jquery');
     $('[data-toggle="tooltip"]').tooltip(); 
-    console.log('From Jquery hot');
+    console.log('From Jquery hot or not ');
 });
