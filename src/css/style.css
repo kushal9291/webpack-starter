@@ -68,3 +68,6 @@ body{
 h1{
     font-family: 'quicksand', Helvetica, sans-serif
 }
+h1{
+    transition: all 0.5s linear;
+}
