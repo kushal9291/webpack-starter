@@ -18,18 +18,7 @@ module.exports = merge(common, {
                 test: /\.css$/,
                 use:[ 
                       "style-loader",                        
-                      { loader: 'css-loader', options: { importLoaders: 1 } },
-                      {
-                        loader: 'postcss-loader',
-                        options: {
-                          config: {
-                            ctx: {
-                                'postcss-preset-env': {},
-                                cssnano: {},
-                            }
-                          }
-                        }
-                      }    
+                      "css-loader" 
                 ]
             },
         ]
