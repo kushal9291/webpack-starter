@@ -12,6 +12,7 @@ module.exports = merge(common, {
     optimization: {
         minimizer: [
           new UglifyJsPlugin({
+            test: /\.js(\?.*)?$/i,
             cache: true,
             parallel: true,
             sourceMap: false // set to true if you want JS source maps
