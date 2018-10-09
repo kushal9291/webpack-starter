@@ -7,3 +7,8 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
     console.log('From Jquery hot or not ');
 });
+
+const sayHello = () => {
+    console.log('Hello!');
+}
+sayHello();
