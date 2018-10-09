@@ -31,7 +31,8 @@ module.exports = merge(common, {
                           // by default it use publicPath in webpackOptions.output
                         }
                       },                        
-                      "css-loader"
+                      "css-loader", 
+                      "postcss-loader"
                 ]
             },
         ]
