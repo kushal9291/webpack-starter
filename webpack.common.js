@@ -1,9 +1,10 @@
 const path = require('path');
-const merge = require('webpack-merge'); 
-const plugins = require('./plugins');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
+const htmlPages = require('./htmlpages').files;
 const webpack = require('webpack'); 
 
-module.exports = merge (plugins, {
+module.exports = {
     entry: './src/js/app.js',
     output:{
         filename: 'js/bundle.js',
@@ -66,5 +67,20 @@ module.exports = merge (plugins, {
                 ]              
             }
         ]
-    }
-});
+    },
+    plugins: [ 
+        new CleanWebpackPlugin(['dist']),  
+        ...htmlPages,
+        new HtmlBeautifyPlugin({
+        config: {
+            html: {
+                end_with_newline: true,
+                indent_size: 1,
+                indent_with_tabs: true,
+                indent_inner_html: true 
+            }
+        },
+        replace: [ ' type="text/javascript"' ]
+    })
+  ]
+};
