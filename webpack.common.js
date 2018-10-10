@@ -8,7 +8,8 @@ module.exports = {
     entry: './src/js/app.js',
     output:{
         filename: 'js/bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),  
+        publicPath: '/'
     },
     module:{
         rules:[
@@ -34,7 +35,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env'],
-                        plugins: ['@babel/plugin-transform-runtime']
+                        plugins: ['@babel/plugin-transform-runtime'] 
                     }
                   }
 
@@ -46,7 +47,8 @@ module.exports = {
                         loader:'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'images/'
+                            outputPath: 'images/',
+                            publicPath: '/images/'
                           }
                     }
                 ]
@@ -59,7 +61,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: 'fonts/',
-                            publicPath: '../fonts/'
+                            publicPath: '/fonts/'
                           }
                     }
                 ]              
@@ -78,6 +80,16 @@ module.exports = {
             title: 'Blank File',
             filename: path.resolve(__dirname, 'dist/blank.html'),
             template: path.resolve(__dirname, 'src/views/blank.html')
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Blank File',
+            filename: path.resolve(__dirname, 'dist/phase_1/file1.html'),
+            template: path.resolve(__dirname, 'src/views/phase_1/file1.html')
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Blank File',
+            filename: path.resolve(__dirname, 'dist/phase_1/file2.html'),
+            template: path.resolve(__dirname, 'src/views/phase_1/file2.html')
         }),
          new HtmlBeautifyPlugin({
             config: {
